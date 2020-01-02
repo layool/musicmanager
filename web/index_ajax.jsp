@@ -1,6 +1,6 @@
 <%@ page language="java"
 	import="java.util.*,java.sql.*,Pluto.function,java.util.Date,java.text.SimpleDateFormat"
-	pageEncoding="UTF-8"%>
+	pageEncoding="utf-8"%>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.io.IOException" %>
 <%@ page import="java.io.File" %>
@@ -34,8 +34,7 @@
 	maxPage = (count % pagesize == 0) ? (count / pagesize) : (count
 			/ pagesize + 1);
 	rs.close();
-	rs = conn
-			.executeQuery("select * from music order by id DESC LIMIT "
+	rs = conn.executeQuery("select * from music order by id DESC LIMIT "
 					+ limit + "," + pagesize + "");
 	if (rs.next()) {
 		do {
@@ -47,6 +46,8 @@
 			long time = rs.getLong("time");
 			String url=rs.getString("url");
 			Date date = new Date(time);
+			//System.out.println(title+singer+special+value);
+			//System.out.println(upload.getEncoding(title));
 			SimpleDateFormat sdf = new SimpleDateFormat(
 					"yyyy年MM月dd日 HH:mm:ss");
 			String music_time = sdf.format(date);

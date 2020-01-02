@@ -62,7 +62,7 @@ public class uploadmusic extends ActionSupport {
 					+ getUploadFileName());
 			//System.out.println(fos);
 			FileInputStream fis = new FileInputStream(getUpload());
-			byte[] buffer = new byte[10240];
+			byte[] buffer = new byte[102400];
 			int len = 0;
 			while ((len = fis.read(buffer)) > 0) {
 				fos.write(buffer, 0, len);

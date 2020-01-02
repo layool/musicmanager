@@ -16,12 +16,12 @@
 			<param name="savePath">/upload</param>
 		</action>
 		<action name="upload" class="Pluto.upload"></action>
-		<action name="message" class="Pluto.message"></action>
+		<!--<action name="message" class="Pluto.message"></action>-->
 		<action name="addtobox" class="Pluto.MusicBox"></action>
-		<action name="setbox" class="Pluto.setbox"></action>
+		<!--<action name="setbox" class="Pluto.setbox"></action>-->
 		<action name="addcomments" class="Pluto.addComments"></action>
 		<action name="delmessage" class="Pluto.delmessage"></action>
-		<action name="sendmusic" class="Pluto.sendmusic"></action>
+		<!--<action name="sendmusic" class="Pluto.sendmusic"></action>-->
 		<action name="admin_login" class="Pluto.admin.login"></action>
 		<action name="admin_changepwd" class="Pluto.admin.changepwd"></action>
 		<action name="admin_register" class="Pluto.admin.register"></action>
@@ -29,5 +29,6 @@
 		<!--<action name="admin_link" class="Pluto.admin.link"></action>
 		<action name="admin_dellink" class="Pluto.admin.dellink"></action>-->
 		<action name="admin_delmusic" class="Pluto.admin.delmusic"></action>
+		<!--<action name="admin_logout" class="Pluto.admin.logout"></action>-->
 	</package>
 </struts>

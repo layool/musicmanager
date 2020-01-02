@@ -124,6 +124,9 @@
 											<TH scope=col>
 												试听
 											</TH>
+											<TH scope=col>
+												下载
+											</TH>
 											<!--<TH scope=col>
 												<input type="checkbox" name="chkAll" value="" title="全选/取消"
 													onclick="selectAll();" />
@@ -159,6 +162,7 @@
 																	+ url
 																	+ " /><param name=quality value=high /><param name=menu value=false /><param name=wmode value=transparent /></object>";
 															out.println("<TD>" + player + "</TD>");
+															out.println("<TD>"+"<a href=/ServletDownload?filename="+url+"&title="+title+">点此下载</a>" +"</TD>");
 															//out.println("<TD><input type=\"checkbox\" name=\"list\" id=\"list"
 																			//+ music_box_arr[i]
 																		//	+ "\" value=\""

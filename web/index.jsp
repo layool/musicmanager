@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*,java.sql.*,Pluto.function"
-	pageEncoding="UTF-8"%>
+	pageEncoding="utf-8"%>
 <jsp:useBean id="conn" class="Pluto.DBConnection" scope="session" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,23 +26,24 @@
 		});
 		
 		function dopage(ajaxurl){
-			$('#LoadingStatus').show();
+			<%--$('#LoadingStatus').show();--%>
 			$.ajax({url: ajaxurl,
 			type: 'GET',
 			dataType: 'html',
 			timeout: 30000,
 			async : false,
-			error: function(){$('#content').html('<table  width="50%" border="0" align="center"> <tr> <td class="center_article" align="center">获取文章失败，请刷新此页面！！！</td></tr></table>');$('#LoadingStatus').hide(500);
+			error: function(){$('#content').html('<table  width="50%" border="0" align="center"> <tr> <td class="center_article" align="center">获取文章失败，请刷新此页面！！！</td></tr></table>');
+			<%--$('#LoadingStatus').hide(500);--%>
 			},
 			success: function(html){
 				//window.location="#article_md";
-				$('#LoadingStatus').hide(1000);
+				<%--$('#LoadingStatus').hide(500);--%>
 				$('#content').html(html);
 			}
 			});
 		}
 		
-		function addbox(music_id){
+		<%--function addbox(music_id){
 			$.ajax({url: 'addtobox.action?music_id=' + music_id,
 			type: 'GET',
 			dataType: 'html',
@@ -56,7 +57,7 @@
 				alert(html);
 			}
 			});
-		}
+		}--%>
 		</script>
 	</head>
 	<body>
@@ -94,12 +95,9 @@
 		</div>
 		<hr />
 		<div id="page">
-
 			<div id="bg">
 				<a name="article_md"></a>
-
 				<div id="content">
-
 				</div>
 				<!-- end contentn -->
 				<div id="sidebar">
@@ -108,7 +106,6 @@
 							<%
 								if (session.getAttribute("PlutoUser") == null) {
 							%>
-						
 						<form action="login.action" method="post" class="niceform">
 							<label for="textinput">
 								&nbsp;&nbsp;用户名：

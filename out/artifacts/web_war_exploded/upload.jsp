@@ -29,8 +29,8 @@
 			var singer = $("#singer").val();
 			var special = $("#special").val();
 			var value = $("#value").val();
-			alert(title);
-            alert(singer);
+			//alert(title);
+            //alert(singer);
 			if(!title || title.length<1){
 				$("#tip").html(" <font color=\"red\">歌曲名称不能为空！</font>");
 				return false;
@@ -93,6 +93,7 @@
 							<form id="form1" name="form1" method="post"
 								action="upload.action?path=<%=request.getParameter("path")%>"
 								class="niceform" onsubmit="return check();">
+							<!--οnsubmit="return check() 给form加onsubmit 验证所有表单后再提交，可以用返回false 来阻止submit提交-->
 								<input type="hidden" name="path"
 									value="<%=request.getParameter("path")%>" />
 								<table width="80%" border="0" align="center">
@@ -140,7 +141,7 @@
 										<td>
 											<div align="center">
 												歌&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手：
-												<input type="text" name="singer" id="singer" size="15" accept-charset="UTF-8"
+												<input type="text" name="singer" id="singer" size="15"
 													 />
 											</div>
 										</td>
@@ -159,7 +160,7 @@
 											<div align="center">
 												简&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;介：
 												<input type="hidden" />
-												<textarea name="value" id="value" cols="25" rows="6" accept-charset="UTF-8"></textarea>
+												<textarea name="value" id="value" cols="25" rows="6" ></textarea>
 												<br />
 											</div>
 										</td>
@@ -174,7 +175,7 @@
 									<tr>
 										<td>
 											<div align="center">
-												<input type="submit" name="button" id="button" value="提交" accept-charset="utf-8"/>
+												<input type="submit" name="button" id="button" value="提交" />
 											</div>
 										</td>
 									</tr>

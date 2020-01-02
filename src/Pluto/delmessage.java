@@ -22,7 +22,7 @@ public class delmessage extends ActionSupport {
 		this.list = list;
 	}
 	public String execute() throws IOException, SQLException {
-		ServletActionContext.getResponse().setCharacterEncoding("GB2312");
+		ServletActionContext.getResponse().setCharacterEncoding("UTF-8");
 		PrintWriter out = ServletActionContext.getResponse().getWriter();
 		HttpServletRequest request = ServletActionContext.getRequest();
 		ServletActionContext.getResponse().setHeader("Pragma", "No-cache");

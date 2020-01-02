@@ -14,7 +14,7 @@ if (session.getAttribute("PlutoAdmin")!=null) {
 		framespacing="0">
 		<frame src="left.jsp" name="leftFrame" id="index" scrolling="no"
 			noresize="noresize" id="leftFrame" title="leftFrame" />
-		<frame src="main.jsp" name="MainContent" id="MainContent"
+		<frame src="music.jsp" name="MainContent" id="MainContent"
 			title="MainContent" />
 
 	</frameset>

@@ -36,7 +36,8 @@ function MenuClick(obj,url){
    <li><a href="javascript:void(0)" class="menuA" onclick="MenuClick(this,'user.jsp')"><img src="Control/icons/icon1.gif" alt="" border="0" class="MenuIcon"/>用户管理</a></li>
    <li><a href="javascript:void(0)" class="menuA" onclick="MenuClick(this,'new.jsp')"><img src="Control/icons/icon4.gif" alt="" border="0" class="MenuIcon"/>添加管理员</a></li>
    <li><a href="javascript:void(0)" class="menuA" onclick="MenuClick(this,'changepwd.jsp')"><img src="Control/icons/icon5.gif" alt="" border="0" class="MenuIcon"/>修改密码</a></li>
-   <li><a href="javascript:window.close();" class="menuA" ><img src="Control/icons/icon9.gif" alt="" border="0" class="MenuIcon"/>关闭</a></li>
+   <!--<li><a href="javascript:window.close();" class="menuA" ><img src="Control/icons/icon9.gif" alt="" border="0" class="MenuIcon"/>关闭</a></li>-->
+       <li><a href="index.jsp" target="_top"><img src="Control/icons/icon9.gif" alt="" border="0" class="MenuIcon"/>注销登陆</a></li>
 </ul>
 </body>
 </html>

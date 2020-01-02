@@ -34,7 +34,7 @@ public class login extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		ServletActionContext.getResponse().setCharacterEncoding("GB2312");
+		ServletActionContext.getResponse().setCharacterEncoding("gbk");
 		PrintWriter out = ServletActionContext.getResponse().getWriter();
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		ServletActionContext.getResponse().setHeader("Pragma", "No-cache");
@@ -52,8 +52,7 @@ public class login extends ActionSupport {
 							+ session.getAttribute("PlutoAdmin").toString()
 							+ "' and pwd = '" + adminPwd + "'");
 			if (rs.next()) {
-				out
-						.println("<script language='javascript'>location.href='frame.jsp';</script>");
+				out.println("<script language='javascript'>location.href='frame.jsp';</script>");
 			} else {
 				session.removeAttribute("PlutoAdmin");
 				out.println(function.PlutoJump("用户名密码错误", "index.jsp"));

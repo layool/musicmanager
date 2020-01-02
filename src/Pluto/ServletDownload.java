@@ -38,7 +38,7 @@ public class ServletDownload extends HttpServlet {
         int i=0;
         String filRoute = request.getParameter("filename");
         String filtitle = request.getParameter("title");
-        String[] splita=filRoute.split("/");
+        String[] splita=filRoute.split("\\.");
         for(String ij:splita){
             if(i==1) {
                 saveName =ij;
@@ -47,9 +47,11 @@ public class ServletDownload extends HttpServlet {
         }
         //System.out.println("55555555555"+filRoute);
         //设置文件MIME类型
-        response.setContentType(getServletContext().getMimeType(filtitle));
+        response.setContentType(getServletContext().getMimeType(filRoute));
         //设置Content-Disposition
-        response.setHeader("Content-Disposition", "attachment;filename="+filtitle);
+        System.out.println(filtitle);
+        System.out.println(filRoute);
+        response.setHeader("Content-Disposition", "attachment;filename="+new String(filtitle.getBytes("gb2312"), "ISO8859-1")+"."+saveName);
         //读取目标文件，通过response将目标文件写到客户端
         //获取目标文件的绝对路径
         String fullFileName = getServletContext().getRealPath(filRoute);

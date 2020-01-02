@@ -15,7 +15,7 @@ public class DBConnection {
 	/**
 	 * 锟斤拷菘锟絣锟斤拷url
 	 */
-	static private String strUrl = "jdbc:mysql://localhost:3306/music";
+	static private String strUrl = "jdbc:mysql://localhost:3306/music?useUnicode=yes&characterEncoding=utf8";
 	/**
 	 * 锟斤拷菘锟絣锟斤拷锟矫伙拷锟斤拷
 	 */
