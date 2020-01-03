@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*,java.sql.*,Pluto.function"
 	pageEncoding="utf-8"%>
+<%@ page import="java.awt.*" %>
 <jsp:useBean id="conn" class="Pluto.DBConnection" scope="session" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -19,14 +20,41 @@
 		<style type="text/css" media="screen">
 			@import url(css/niceforms.css);
 		</style>
+        <%! //static int f5=0;
+        	String flag;
+			int flag_int;
+        %>
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$.NiceJForms.build();
-			dopage('index_ajax.jsp?page=1');
-		});
-		
-		function dopage(ajaxurl){
-			<%--$('#LoadingStatus').show();--%>
+			//var flag=document.getElementsByTagName("a").innerHTML;
+            //var flag=$('.paihang').attr('flag');
+            //window.alert(flag);
+            /*$(document).ready(function(){
+                $("a").click(function(){
+                    $(this).hide();
+                });
+            });*/
+            <% flag=request.getParameter("flag");
+            	flag_int=Integer.parseInt(flag == null || "".equals(flag)?"0":flag);
+            	System.out.println(flag_int);
+                 if(flag_int==0){%>
+                     dopage('index_ajax.jsp?page=1');
+                 <%}
+                 if(flag_int==1){%>
+                     dopage('index_ajax1.jsp?page=1');
+			     <% }
+			     if(flag_int==2){%>
+            		dopage('index_ajax2.jsp?page=1');
+            		<%}
+            	 if(flag_int==3){%>
+            		dopage('index_ajax3.jsp?page=1');
+            		<%}%>
+
+         });
+
+         function dopage(ajaxurl){
+             <%--$('#LoadingStatus').show();--%>
 			$.ajax({url: ajaxurl,
 			type: 'GET',
 			dataType: 'html',
@@ -71,6 +99,11 @@
 				</h2>
 			</div>
 			<div id="menu">
+				<style type="text/css">
+					ul{
+						color: #000000;
+					}
+				</style>
 				<ul>
 					<li class="active">
 						<a href="index.jsp" accesskey="1" title="">首页</a>
@@ -87,6 +120,19 @@
 					<!--<li>
 						<a href="player" accesskey="4" title="">播放列表</a>
 					</li>-->
+					<select onchange="window.location=this.value" style="background-color:transparent">
+						<option  value="" selected:disabled style="diaplay:none">排序</option>
+						<option value="index.jsp?flag=0">按时间降序</option>
+						<option value="index.jsp?flag=1">按点击量降序</option>
+						<option value="index.jsp?flag=2">按时间升序</option>
+						<option value="index.jsp?flag=3">按点击量升序</option>
+							<!--<li>
+								<a href="index.jsp?flag=0"  accesskey="5" title="" flag="1">时间</a>
+							</li>
+							<li>
+								<a href="index.jsp?flag=1" accesskey="4" title="" flag="1">点击</a>
+							</li>-->
+					</select>
 				</ul>
 			</div>
 		</div>

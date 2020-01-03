@@ -34,7 +34,7 @@
 	maxPage = (count % pagesize == 0) ? (count / pagesize) : (count
 			/ pagesize + 1);
 	rs.close();
-	rs = conn.executeQuery("select * from music order by id DESC LIMIT "
+	rs = conn.executeQuery("select * from music order by click ASC LIMIT "
 					+ limit + "," + pagesize + "");
 	if (rs.next()) {
 		do {

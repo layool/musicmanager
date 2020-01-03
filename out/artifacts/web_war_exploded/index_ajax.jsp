@@ -19,6 +19,7 @@
 	response.addHeader("Cache-Control", "post-check=0, pre-check=0");
 	response.setHeader("Pragma", "no-cache");
 	int nowpage = function.strToInt(request.getParameter("page"));
+	//int nowflag = function.strToInt(request.getParameter("flag"));
 	int pagesize = 15; //每页容纳的条数
 	int limit = 0; //从多少条开始
 	int maxPage = 0; //一共多少页
@@ -27,15 +28,13 @@
 	} else {
 		nowpage = 1;
 	}
-	ResultSet rs = conn
-			.executeQuery("select count(id) as count from music");
+	ResultSet rs = conn.executeQuery("select count(id) as count from music");
 	rs.next();
 	int count = rs.getInt("count");
 	maxPage = (count % pagesize == 0) ? (count / pagesize) : (count
 			/ pagesize + 1);
 	rs.close();
-	rs = conn
-			.executeQuery("select * from music order by id DESC LIMIT "
+	rs = conn.executeQuery("select * from music order by id DESC LIMIT "
 					+ limit + "," + pagesize + "");
 	if (rs.next()) {
 		do {
