@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>OnlineMusic</title>
+		<title>音乐库管理系统</title>
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
 		<script type="text/javascript" src="js/jquery.js"></script>
@@ -53,11 +53,8 @@
 		<div id="header">
 			<div id="logo">
 				<h1>
-					OnlineMusic
+					音乐库管理系统
 				</h1>
-				<h2>
-			
-				</h2>
 			</div>
 			<div id="menu">
 				<ul>
@@ -93,7 +90,7 @@
 							<form id="form1" name="form1" method="post"
 								action="upload.action?path=<%=request.getParameter("path")%>"
 								class="niceform" onsubmit="return check();">
-							<!--οnsubmit="return check() 给form加onsubmit 验证所有表单后再提交，可以用返回false 来阻止submit提交-->
+							<!--onsubmit="return check() 给form加onsubmit 验证所有表单后再提交，可以用返回false 来阻止submit提交-->
 								<input type="hidden" name="path"
 									value="<%=request.getParameter("path")%>" />
 								<table width="80%" border="0" align="center">
@@ -251,11 +248,6 @@
 		</div>
 		<!-- end page -->
 		<hr />
-		<div id="footer">
-			<p>
-			(c) 2008 onlinemusic
-			</p>
-		</div>
 	</body>
 </html>
 <%

@@ -21,7 +21,7 @@ public class logout extends ActionSupport {
 		//session.removeAttribute()适用于清空指定的属性
 		//session.invalidate()是清除当前session的所有相关信息
 		session.removeAttribute("PlutoUser");
-		out.println(function.PlutoJump("注销成功", "index.jsp"));
+		out.println(function.toJump( "index.jsp"));
 		return null;
 	}
 }

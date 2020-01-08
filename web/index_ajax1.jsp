@@ -1,6 +1,6 @@
 <%@ page language="java"
-	import="java.util.*,java.sql.*,Pluto.function,java.util.Date,java.text.SimpleDateFormat"
-	pageEncoding="utf-8"%>
+		 import="java.util.*,java.sql.*,Pluto.function,java.util.Date,java.text.SimpleDateFormat"
+		 pageEncoding="utf-8"%>
 <%@ page import="java.net.URLEncoder" %>
 <%@ page import="java.io.IOException" %>
 <%@ page import="java.io.File" %>
@@ -11,31 +11,30 @@
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/thickbox.js"></script>
 <script type="text/javascript" src="js/nicejforms.js"></script>
-
+<script type="text/javascript">
+    function addbox(music_id){
+        $.ajax({url: 'addtobox.action?music_id=' + music_id,
+            type: 'GET',
+            dataType: 'html',
+            timeout: 30000,
+            async : false,
+            error: function(){
+                alert("出现错误！");
+            },
+            success: function(html){
+                //window.location="#article_md";
+                alert(html);
+            }
+        });
+    }
+</script>
 <%
 	response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
 	response.setHeader("Cache-Control",
 			"no-store, no-cache, must-revalidate");
 	response.addHeader("Cache-Control", "post-check=0, pre-check=0");
 	response.setHeader("Pragma", "no-cache");
-	int nowpage = function.strToInt(request.getParameter("page"));
-	//int nowflag = function.strToInt(request.getParameter("flag"));
-	int pagesize = 15; //每页容纳的条数
-	int limit = 0; //从多少条开始
-	int maxPage = 0; //一共多少页
-	if (nowpage != 0) {
-		limit = (nowpage - 1) * pagesize;
-	} else {
-		nowpage = 1;
-	}
-	ResultSet rs = conn.executeQuery("select count(id) as count from music");
-	rs.next();
-	int count = rs.getInt("count");
-	maxPage = (count % pagesize == 0) ? (count / pagesize) : (count
-			/ pagesize + 1);
-	rs.close();
-	rs = conn.executeQuery("select * from music order by click DESC LIMIT "
-					+ limit + "," + pagesize + "");
+	ResultSet rs = conn.executeQuery("select * from music order by click DESC");
 	if (rs.next()) {
 		do {
 			String id = rs.getString("id");
@@ -64,7 +63,6 @@
 %>
 <div class="post">
 	<h2 class="title">
-		<%--<a href="show.jsp?id=<%=id%>"><%=title%></a>--%>
 		<%=title%>
 	</h2>
 	<h3 class="date">
@@ -74,11 +72,11 @@
 		<p>
 			试听：
 			<object type="application/x-shockwave-flash"
-				data="player/audioplayer.swf" width="290" height="24"
-				id="audioplayer<%=rd_id%>">
+					data="player/audioplayer.swf" width="290" height="24"
+					id="audioplayer<%=rd_id%>">
 				<param name="movie" value="player/audioplayer.swf" />
 				<param name="FlashVars"
-					value="playerID=<%=rd_id%>&soundFile=<%=filePath%>" />
+					   value="playerID=<%=rd_id%>&soundFile=<%=filePath%>" />
 				<param name="quality" value="high" />
 				<param name="menu" value="false" />
 				<param name="wmode" value="transparent" />
@@ -91,8 +89,14 @@
 			所在专辑：
 			<%=special%><br />
 			<%=value%><br />
+			<%
+				if (session.getAttribute("PlutoUser") != null) {
+			%>
 			下载：
 			<a href="/ServletDownload?filename=<%=url%>&title=<%=title%>">点此下载</a>
+			<%
+				}
+			%>
 		</p>
 	</div>
 	<p class="meta">
@@ -107,10 +111,7 @@
 		<b>|</b>
 		<a href="JavaScript:addbox('<%=id%>');" class="comments">添加到我的音乐盒</a>
 		<b>|</b>
-		<img src="images/img14.gif">
 		&nbsp;
-		<%--<a href="sendmusic.jsp?height=230&width=350&modal=true&id=<%=id%>"
-			class="thickbox" title="我要注册">点歌</a>--%>
 		<%
 			}
 		%>
@@ -118,10 +119,7 @@
 </div>
 <%
 	} while (rs.next());
-		out.println("<div class=\"yahoo2\">"
-				+ function.page(maxPage, nowpage, pagesize,
-						"index_ajax.jsp") + "</div><br />");
-	} else {
+} else {
 %>
 <div class="post">
 	暂无任何歌曲，快来分享给大家喔~！

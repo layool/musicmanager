@@ -1,9 +1,4 @@
-/*
-SQLyog 企业版 - MySQL GUI v8.14 
-MySQL - 5.1.49-community : Database - music
-*********************************************************************
-*/
-
+﻿
 /*!40101 SET NAMES utf8 */;
 
 /*!40101 SET SQL_MODE=''*/;
@@ -49,39 +44,6 @@ CREATE TABLE `comments` (
 
 insert  into `comments`(`id`,`value`,`name`,`music_id`,`time`) values (3,'','',4,'1249184435265'),(4,'非常好听，所有人都要听哦！','游客1',5,'1282140270512');
 
-/*Table structure for table `link` */
-
-DROP TABLE IF EXISTS `link`;
-
-CREATE TABLE `link` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `value` text,
-  `title` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
-/*Data for the table `link` */
-
-insert  into `link`(`id`,`value`,`title`) values (3,'http://baidu.com',''),(4,'http://google.com','google');
-
-/*Table structure for table `message` */
-
-DROP TABLE IF EXISTS `message`;
-
-CREATE TABLE `message` (
-  `id` int(5) NOT NULL AUTO_INCREMENT,
-  `from` varchar(20) DEFAULT NULL,
-  `to` int(4) DEFAULT NULL,
-  `title` varchar(200) NOT NULL,
-  `value` text NOT NULL,
-  `time` varchar(13) NOT NULL,
-  `new` int(1) DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-/*Data for the table `message` */
-
-insert  into `message`(`id`,`from`,`to`,`title`,`value`,`time`,`new`) values (2,'cjgong',9,'祝贺你','cjgong发给你的短信。','1282141327426',0);
 
 /*Table structure for table `music` */
 

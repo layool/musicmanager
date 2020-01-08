@@ -38,7 +38,7 @@ public class addComments extends ActionSupport {
 	}
 
 	public String execute() throws IOException {
-		ServletActionContext.getResponse().setCharacterEncoding("UTF-8");
+		ServletActionContext.getResponse().setCharacterEncoding("utf-8");
 		PrintWriter out = ServletActionContext.getResponse().getWriter();
 		ServletActionContext.getResponse().setHeader("Pragma", "No-cache");
 		ServletActionContext.getResponse().setHeader("Cache-Control",

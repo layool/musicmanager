@@ -8,41 +8,22 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DBConnection {
-	/**
-	 * 锟斤拷菘锟斤拷锟斤拷锟斤拷锟�
-	 */
+
 	static private String strDriver = "com.mysql.jdbc.Driver";
-	/**
-	 * 锟斤拷菘锟絣锟斤拷url
-	 */
+
 	static private String strUrl = "jdbc:mysql://localhost:3306/music?useUnicode=yes&characterEncoding=utf8";
-	/**
-	 * 锟斤拷菘锟絣锟斤拷锟矫伙拷锟斤拷
-	 */
+
 	static private String strUser = "root";
-	/**
-	 * 锟斤拷菘锟絣锟斤拷锟斤拷锟斤拷
-	 */
+
 	static private String strPwd = "root";
-	/**
-	 * connection 锟斤拷锟斤拷
-	 */
+
 	private Connection conn = null;
-	/**
-	 * Statement锟斤拷锟斤拷锟斤拷connection锟斤拷锟斤拷锟斤拷锟�
-	 */
+
 	private Statement stmt = null;
-	/**
-	 * PreparedStatement锟斤拷锟斤拷锟斤拷connection锟斤拷锟斤拷锟斤拷锟�
-	 */
+
 	private PreparedStatement pstmt = null;
-	/**
-	 * ResultSet 锟斤拷锟�
-	 */
+
 	private ResultSet rs = null;
-	/**
-	 * @des 锟洁静态锟斤拷始锟斤拷锟解，装锟斤拷锟斤拷菘锟斤拷锟�
-	 */
 	static {
 		try {
 			Class.forName(strDriver);
@@ -53,10 +34,7 @@ public class DBConnection {
 
 	public DBConnection() {
 	}
-
-	/**
-	 * @des 锟斤拷锟斤拷锟捷匡拷l锟斤拷
-	 */
+	//获取数据库连接
 	private Connection getConnection() {
 		try {
 			if (conn == null || conn.isClosed())
@@ -68,9 +46,6 @@ public class DBConnection {
 		return conn;
 	}
 
-	/**
-	 * @des 锟截憋拷锟斤拷菘锟絣锟斤拷
-	 */
 	public void close() {
 		try {
 			if (rs != null) {
@@ -89,13 +64,8 @@ public class DBConnection {
 			System.err.println("close error:" + ex.getMessage());
 		}
 	}
-
-	/**
-	 * @des锟斤拷锟絪ql 锟斤拷询
-	 * @param sql
-	 *            锟斤拷询锟斤拷sql锟斤拷锟�
-	 * @return ResultSet(锟斤拷锟�)
-	 */
+	/*executeQuery只能用于查询，execute方法才可以执行insert，update，delete操作。
+	*/
 	public ResultSet executeQuery(String sql) {
 		try {
 			pstmt = getConnection().prepareStatement(sql);
@@ -106,12 +76,6 @@ public class DBConnection {
 		return rs;
 	}
 
-	/**
-	 * @des锟斤拷锟絪ql 执锟斤拷
-	 * @param sql
-	 *            执锟叫碉拷sql锟斤拷锟�
-	 * @return 锟角凤拷锟斤拷确
-	 */
 	public boolean execute(String sql) {
 		try {
 			pstmt = getConnection().prepareStatement(sql);
@@ -125,12 +89,6 @@ public class DBConnection {
 		return true;
 	}
 
-	/**
-	 * @des 锟斤拷锟斤拷
-	 * @param 锟斤拷锟铰碉拷sql
-	 *            锟斤拷锟�
-	 * @return int 锟斤拷锟截斤拷锟斤拷锟接帮拷锟斤拷锟斤拷锟斤拷)
-	 */
 	public int executeUpdate(String sql) {
 		int resultNum = 0;
 		try {

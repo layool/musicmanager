@@ -142,6 +142,20 @@ img.right {
 	font-weight: bold;
 	color: #FFFFFF;
 }
+#menu a {
+	padding: 0 28px 0 0;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+#menu input {
+	padding: 0 28px 0 0;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
 
 /* Page */
 

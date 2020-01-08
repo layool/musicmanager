@@ -3,8 +3,6 @@ package Pluto.admin;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.ServletActionContext;
 
 import Pluto.DBConnection;

@@ -6,104 +6,65 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Onlinemusic</title>
-		<meta name="keywords" content="" />
-		<meta name="description" content="" />
+		<title>音乐库管理系统</title>
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/nicejforms.js"></script>
 		<script type="text/javascript" src="js/thickbox.js"></script>
 		<script type="text/javascript" src="js/audioplayer.js"></script>
-		<link href="css/default.css" rel="stylesheet" type="text/css" />
 		<link href="css/page.css" rel="stylesheet" type="text/css" />
+		<link href="css/default.css" rel="stylesheet" type="text/css" />
 		<link href="css/thickbox.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="css/LoadingStatus.css" type="text/css" />
 		<style type="text/css" media="screen">
 			@import url(css/niceforms.css);
 		</style>
-        <%! //static int f5=0;
+        <%!
         	String flag;
 			int flag_int;
         %>
 		<script type="text/javascript">
 		$(document).ready(function(){
 			$.NiceJForms.build();
-			//var flag=document.getElementsByTagName("a").innerHTML;
-            //var flag=$('.paihang').attr('flag');
-            //window.alert(flag);
-            /*$(document).ready(function(){
-                $("a").click(function(){
-                    $(this).hide();
-                });
-            });*/
             <% flag=request.getParameter("flag");
             	flag_int=Integer.parseInt(flag == null || "".equals(flag)?"0":flag);
             	System.out.println(flag_int);
                  if(flag_int==0){%>
-                     dopage('index_ajax.jsp?page=1');
+                     dopage('index_ajax.jsp');
                  <%}
                  if(flag_int==1){%>
-                     dopage('index_ajax1.jsp?page=1');
+                     dopage('index_ajax1.jsp');
 			     <% }
 			     if(flag_int==2){%>
-            		dopage('index_ajax2.jsp?page=1');
+            		dopage('index_ajax2.jsp');
             		<%}
             	 if(flag_int==3){%>
-            		dopage('index_ajax3.jsp?page=1');
+            		dopage('index_ajax3.jsp');
             		<%}%>
 
          });
-
          function dopage(ajaxurl){
-             <%--$('#LoadingStatus').show();--%>
 			$.ajax({url: ajaxurl,
 			type: 'GET',
 			dataType: 'html',
 			timeout: 30000,
 			async : false,
 			error: function(){$('#content').html('<table  width="50%" border="0" align="center"> <tr> <td class="center_article" align="center">获取文章失败，请刷新此页面！！！</td></tr></table>');
-			<%--$('#LoadingStatus').hide(500);--%>
 			},
 			success: function(html){
-				//window.location="#article_md";
-				<%--$('#LoadingStatus').hide(500);--%>
 				$('#content').html(html);
 			}
 			});
 		}
-		
-		<%--function addbox(music_id){
-			$.ajax({url: 'addtobox.action?music_id=' + music_id,
-			type: 'GET',
-			dataType: 'html',
-			timeout: 30000,
-			async : false,
-			error: function(){
-				alert("出现错误！");
-			},
-			success: function(html){
-				//window.location="#article_md";
-				alert(html);
-			}
-			});
-		}--%>
 		</script>
 	</head>
+	<!--<body style="background-image: url(/images/imag1.jpg);background-size: 100%">-->
 	<body>
 		<div id="header">
 			<div id="logo">
 				<h1>
-					OnlineMusic
+					音乐库管理系统
 				</h1>
-				<h2>
-					
-				</h2>
 			</div>
 			<div id="menu">
-				<style type="text/css">
-					ul{
-						color: #000000;
-					}
-				</style>
 				<ul>
 					<li class="active">
 						<a href="index.jsp" accesskey="1" title="">首页</a>
@@ -111,33 +72,18 @@
 					<li>
 						<a href="musicbox.jsp" accesskey="2" title="">音乐盒</a>
 					</li>
-					<!--<li>
-						<a href="message.jsp" accesskey="3" title="">短消息</a>
-					</li>-->
 					<li>
 						<a href="uploadmusic.jsp" accesskey="3" title="">分享歌曲</a>
 					</li>
-					<!--<li>
-						<a href="player" accesskey="4" title="">播放列表</a>
-					</li>-->
 					<select onchange="window.location=this.value" style="background-color:transparent">
 						<option  value="" selected:disabled style="diaplay:none">排序</option>
 						<option value="index.jsp?flag=0">按时间降序</option>
 						<option value="index.jsp?flag=1">按点击量降序</option>
 						<option value="index.jsp?flag=2">按时间升序</option>
 						<option value="index.jsp?flag=3">按点击量升序</option>
-							<!--<li>
-								<a href="index.jsp?flag=0"  accesskey="5" title="" flag="1">时间</a>
-							</li>
-							<li>
-								<a href="index.jsp?flag=1" accesskey="4" title="" flag="1">点击</a>
-							</li>-->
 					</select>
 				</ul>
 			</div>
-		</div>
-		<div id="LoadingStatus">
-			<img src="images/ajax-loader.gif" />
 		</div>
 		<hr />
 		<div id="page">
@@ -158,7 +104,7 @@
 							</label>
 							<br />
 							&nbsp;&nbsp;
-							<input type="text" id="textinput" name="userName" size="15" autocomplete="off" autocomplete="off"
+							<input type="text" id="textinput" name="userName" size="15"
 								maxlength="16" />
 							<br />
 							<label for="passwordinput">
@@ -167,14 +113,14 @@
 							<br />
 							&nbsp;&nbsp
 							<%-- name为连接login.action的形参--%>
-							<input type="password" id="passwordinput" name="userPwd" autocomplete="off"
+							<input type="password" id="passwordinput" name="userPwd"
 								size="15" maxlength="16" />
 							<br />
 							<br />
 							&nbsp;&nbsp;&nbsp;&nbsp;
 							<a href="register.jsp?height=175&width=300&modal=true"
 								class="thickbox" title="我要注册">我要注册</a> &nbsp;&nbsp;
-							<input type="submit" value="登  陆" autocomplete="off" />
+							<input type="submit" value="登  陆" />
 
 						</form>
 
@@ -186,33 +132,18 @@
 						<p>
 							<%=session.getAttribute("PlutoUser").toString()%>，欢迎您回来！
 						</p>
-						<%--<%
-							String userName = session.getAttribute("PlutoUser").toString();
-								ResultSet user_rs = conn
-										.executeQuery("select id from user where name = '"
-												+ userName + "'");
-								user_rs.next();
-								String id = user_rs.getString("id");
-								ResultSet message_rs = conn
-										.executeQuery("select count(id) as count from message where `to` ="
-												+ id + " and `new` = 1");
-								message_rs.next();
-								int myMessage = message_rs.getInt("count");
-						%>--%>
 						<p>
-							<%--您有<%=(myMessage==0)?(myMessage):("<font color=red><strong>" + myMessage + "</strong></font>")%>封未读短消息，请
-							<a href="message.jsp" style="color: red">查看</a>！
-							<br />
-							播放我上次创建的
-							<a href="player" style="color: red">[播放列表]</a>！
-							<br />--%>
 							如果您有音乐分享，您可以点我进行
 							<a href="uploadmusic.jsp" style="color: red">[上传音乐]</a>！
-							<br />
+						</p>
+						<p>
+							如果忘记密码可以选择
+							<a href="changepwd.jsp?height=175&width=300&modal=true"
+							   class="thickbox" style="color: red" title="修改密码">[修改密码]</a>！
 						</p>
 						<p>
 							退出请点
-							<a href="logout.action" style="color: #FF0000">[注销登陆]</a>！
+							<a href="logout.action" style="color: red">[注销登陆]</a>！
 						</p>
 						<%
 							}
@@ -225,8 +156,7 @@
 							</h2>
 							<ul>
 								<%
-									ResultSet tip_rs = conn
-											.executeQuery("SELECT * FROM `tip` ORDER BY id DESC LIMIT 10");
+									ResultSet tip_rs = conn.executeQuery("SELECT * FROM `tip` ORDER BY id DESC");
 									while (tip_rs.next()) {
 										String tip = tip_rs.getString("value");
 										out.println("<li>");
@@ -247,10 +177,5 @@
 		</div>
 		<!-- end page -->
 		<hr />
-		<div id="footer">
-			<p>
-				(c) 2013 onlinemusic
-			</p>
-		</div>
 	</body>
 </html>

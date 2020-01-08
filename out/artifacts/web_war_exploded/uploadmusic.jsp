@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>OnlineMusic</title>
+		<title>音乐库管理系统</title>
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
 		<script type="text/javascript" src="js/jquery.js"></script>
@@ -29,11 +29,8 @@ $(document).ready(function(){
 		<div id="header">
 			<div id="logo">
 				<h1>
-					OnlineMusic
+					音乐库管理系统
 				</h1>
-				<h2>
-				
-				</h2>
 			</div>
 			<div id="menu">
 				<ul>
@@ -43,15 +40,9 @@ $(document).ready(function(){
 					<li>
 						<a href="musicbox.jsp" accesskey="2" title="">音乐盒</a>
 					</li>
-					<!--<li>
-						<a href="message.jsp" accesskey="3" title="">短消息</a>
-					</li>-->
 					<li>
 						<a href="uploadmusic.jsp" accesskey="3" title="">分享歌曲</a>
 					</li>
-					<!--<li>
-						<a href="player" accesskey="4" title="">播放列表</a>
-					</li>-->
 				</ul>
 			</div>
 		</div>
@@ -161,11 +152,6 @@ $(document).ready(function(){
 		</div>
 		<!-- end page -->
 		<hr />
-		<div id="footer">
-			<p>
-				(c) 2008 onlinemusic
-			</p>
-		</div>
 	</body>
 </html>
 <%

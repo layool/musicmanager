@@ -39,11 +39,11 @@ public class uploadmusic extends ActionSupport {
 		this.savePath = value;
 	}
 	private String getSavePath() throws Exception {
-		return ServletActionContext.getRequest().getRealPath(savePath);
+		return ServletActionContext.getServletContext().getRealPath(savePath);
 	}
 	
 	public String execute() throws Exception {
-		ServletActionContext.getResponse().setCharacterEncoding("GB2312");
+		ServletActionContext.getResponse().setCharacterEncoding("utf-8");
 		PrintWriter out = ServletActionContext.getResponse().getWriter();
 		ServletActionContext.getResponse().setHeader("Pragma", "No-cache");
 		ServletActionContext.getResponse().setHeader("Cache-Control",
@@ -57,10 +57,11 @@ public class uploadmusic extends ActionSupport {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		Date dt = new Date();
 		Random rd = new Random();
-		setUploadFileName(sdf.format(dt) + rd.nextInt(9999) + fileType);
+		setUploadFileName(sdf.format(dt) + rd.nextInt(999999) + fileType);
 			FileOutputStream fos = new FileOutputStream(getSavePath() + "/"
 					+ getUploadFileName());
-			//System.out.println(fos);
+			System.out.println("111111111"+fos);
+			System.out.println(upload);
 			FileInputStream fis = new FileInputStream(getUpload());
 			byte[] buffer = new byte[102400];
 			int len = 0;
