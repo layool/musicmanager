@@ -20,8 +20,11 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletDownload</servlet-name>
+        <!--会匹配所有url：路径型的和后缀型的url(包括/login,*.jsp,*.js和*.html等)-->
         <url-pattern>/ServletDownload</url-pattern>
     </servlet-mapping>
+    <!--welcome-file-list是一个配置在web.xml中的一个欢迎页，
+    用于当用户在url中输入工程名称或者输入web容器url（如http://localhost:8080/）时直接跳转的页面-->
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>

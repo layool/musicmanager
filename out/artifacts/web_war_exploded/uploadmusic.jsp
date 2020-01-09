@@ -57,8 +57,10 @@ $(document).ready(function(){
 
 						<div class="entry">
 							<p>
+							<!--是设置表单的MIME编码。默认情况，这个编码格式是application/x-www-form-urlencoded
+							不能用于文件上传；只有使用了multipart/form-data，才能完整的传递文件数据-->
 							<form id="form1" name="form1" method="post"
-								enctype="multipart/form-data" action="uploadmusic.action" accept-charset="UTF-8"
+								enctype="multipart/form-data" action="uploadmusic.action"
 								class="niceform">
 								<table width="80%" border="0" align="center">
 									<tr>

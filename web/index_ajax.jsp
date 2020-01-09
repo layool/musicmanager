@@ -40,6 +40,7 @@
 			String id = rs.getString("id");
 			String title = rs.getString("title");
 			String singer = rs.getString("singer");
+			String price = rs.getString("price");
 			String special = rs.getString("special");
 			String value = rs.getString("value");
 			long time = rs.getLong("time");
@@ -86,6 +87,8 @@
 			<%=title%><br />
 			歌手：
 			<%=singer%><br />
+			价格：
+			<%=price%><br />
 			所在专辑：
 			<%=special%><br />
 			<%=value%><br />

@@ -54,6 +54,7 @@ CREATE TABLE `music` (
   `title` varchar(50) DEFAULT NULL,
   `singer` varchar(30) NOT NULL,
   `special` varchar(30) NOT NULL,
+  `price` varchar(10) ,
   `value` text NOT NULL,
   `time` varchar(13) NOT NULL,
   `click` int(5) NOT NULL,

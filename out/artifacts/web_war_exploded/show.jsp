@@ -11,6 +11,7 @@
 		if (rs.next()) {
 			String title = rs.getString("title");
 			String singer = rs.getString("singer");
+			String price = rs.getString("price");
 			String special = rs.getString("special");
 			String value = rs.getString("value");
 			long time = rs.getLong("time");
@@ -59,8 +60,8 @@
 
         function validate(formData, jqForm, options) {
             var Value = $("#valueid").val();
-            if (!Value || Value.length<=10) {
-                $('#valueTip').html("<font color=\"red\">评论必须大于10个字符！</font>");
+            if (!Value || Value.length<=2) {
+                $('#valueTip').html("<font color=\"red\">评论必须大于2个字符！</font>");
                 return false;
             }else {
                 $('#valueTip').html(" ");
@@ -152,6 +153,8 @@
 						<br />
 						歌手：
 						<%=singer%><br />
+						价格：
+						<%=price%><br />
 						所在专辑：
 						<%=special%><br />			<%
 						if (session.getAttribute("PlutoUser") != null) {

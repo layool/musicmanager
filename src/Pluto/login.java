@@ -44,7 +44,7 @@ public class login extends ActionSupport {
 		if (function.isInvalid(userName) || function.isInvalid(userPwd)) {
 			out.println(function.PlutoJump("用户名或密码不能为空", "index.jsp"));
 		} else {
-			session.setAttribute("PlutoUser", userName);
+			session.setAttribute("PlutoUser", userName);//设置session
 			userPwd = function.MD5Encode(userPwd);
 			DBConnection conn = new DBConnection();
 			ResultSet rs = conn
@@ -52,9 +52,8 @@ public class login extends ActionSupport {
 							+ session.getAttribute("PlutoUser").toString()
 							+ "' and pwd = '" + userPwd + "'");
 			if (rs.next()) {
-				out
-						.println("<script language='javascript'>location.href='index.jsp';</script>");
-			} else {
+				out.println("<script language='javascript'>location.href='index.jsp';</script>");
+			} else {//登录出错则删除指定的session
 				session.removeAttribute("PlutoUser");
 				out.println(function.PlutoJump("用户名密码错误", "index.jsp"));
 			}

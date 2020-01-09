@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!--拦截器拦截超过90mb的文件-->
+	<constant name="struts.multipart.maxSize" value="90000000" />
+	<package name="Pluto" extends="struts-default">
+		<!--这个是struts中定义action请求跳转的。
+		这是struts2配置文件，和spring结合时class的值可以为spring配置文件中bean的name/id
+		jsp的映射到java控制层的-->
+		<action name="register" class="Pluto.register"></action>
+		<action name="login" class="Pluto.login"></action>
+		<action name="logout" class="Pluto.logout"></action>
+		<action name="uploadmusic" class="Pluto.uploadmusic">
+			<param name="savePath">/upload</param>
+		</action>
+		<action name="upload" class="Pluto.upload"></action>
+		<action name="addtobox" class="Pluto.MusicBox"></action>
+		<action name="addcomments" class="Pluto.addComments"></action>
+		<action name="admin_login" class="Pluto.admin.login"></action>
+		<action name="admin_changepwd" class="Pluto.admin.changepwd"></action>
+		<action name="admin_register" class="Pluto.admin.register"></action>
+		<action name="admin_deluser" class="Pluto.admin.deluser"></action>
+		<action name="admin_delmusic" class="Pluto.admin.delmusic"></action>
+		<action name="delmusicbox" class="Pluto.delmusicbox"/>
+		<action name="changepwd" class="Pluto.changepwd"></action>
+	</package>
+</struts>

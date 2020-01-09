@@ -7,13 +7,15 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
-
 import org.apache.struts2.ServletActionContext;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class uploadmusic extends ActionSupport {
 	private File upload;
+	//uploadFileName和uploadContentType，这两个属性分别用于封装上传文件的文件名、上传文件的文件类型。
+	// 这两个属性，体现了Struts2设计的灵巧、简化之处，Action类直接通过File类型属性直接封装了上传文件的文件内容，
+	// 但这个File属性无法获取上传文件的文件名和文件类型，
+	// 所以Struts2直接将文件域中包含的上传文件名和文件类型的信息封装到uploadFileName和uploadContentType属性中。
 	private String uploadContentType;
 	private String uploadFileName;
 	private String savePath;
@@ -43,7 +45,7 @@ public class uploadmusic extends ActionSupport {
 	}
 	
 	public String execute() throws Exception {
-		ServletActionContext.getResponse().setCharacterEncoding("utf-8");
+		ServletActionContext.getResponse().setCharacterEncoding("gb2312");
 		PrintWriter out = ServletActionContext.getResponse().getWriter();
 		ServletActionContext.getResponse().setHeader("Pragma", "No-cache");
 		ServletActionContext.getResponse().setHeader("Cache-Control",
@@ -60,6 +62,9 @@ public class uploadmusic extends ActionSupport {
 		setUploadFileName(sdf.format(dt) + rd.nextInt(999999) + fileType);
 			FileOutputStream fos = new FileOutputStream(getSavePath() + "/"
 					+ getUploadFileName());
+			System.out.println("111111111"+getUpload());
+			System.out.println("111111111"+getSavePath());
+			System.out.println("2222222222"+getUploadFileName());
 			System.out.println("111111111"+fos);
 			System.out.println(upload);
 			FileInputStream fis = new FileInputStream(getUpload());
@@ -74,6 +79,5 @@ public class uploadmusic extends ActionSupport {
 
 		return null;
 	}
-	
-	
+
 }

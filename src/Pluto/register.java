@@ -39,7 +39,7 @@ public class register extends ActionSupport {
 	}
 
 	public String execute() throws SQLException, IOException{
-		ServletActionContext.getResponse().setCharacterEncoding("GB2312");
+		ServletActionContext.getResponse().setCharacterEncoding("gb2312");
 		PrintWriter out = ServletActionContext.getResponse().getWriter();
 		ServletActionContext.getResponse().setHeader("Pragma", "No-cache");
 		ServletActionContext.getResponse().setHeader("Cache-Control",

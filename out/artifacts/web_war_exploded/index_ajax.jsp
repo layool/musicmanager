@@ -40,6 +40,7 @@
 			String id = rs.getString("id");
 			String title = rs.getString("title");
 			String singer = rs.getString("singer");
+			String price = rs.getString("price");
 			String special = rs.getString("special");
 			String value = rs.getString("value");
 			long time = rs.getLong("time");
@@ -82,10 +83,13 @@
 				<param name="wmode" value="transparent" />
 			</object>
 			<br />
+			<embed id="AudioPlayback" src="http://mail.google.com/mail/html/audio.swf?audioUrl=<%=filePath%> style="width:400px; height:27px;" type="application/x-shockwave-flash"> </embed>
 			歌曲名：
 			<%=title%><br />
 			歌手：
 			<%=singer%><br />
+			价格：
+			<%=price%><br />
 			所在专辑：
 			<%=special%><br />
 			<%=value%><br />

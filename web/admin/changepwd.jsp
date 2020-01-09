@@ -10,7 +10,7 @@ if (session.getAttribute("PlutoAdmin")!=null) {
 <title>无标题文档</title>
 </head>
 
-<body>
+<body style="background-image: url(/images/imag1.jpg);background-size: 100%">
 <form id="form1" name="form1" method="post" action="admin_changepwd.action">
   <label>旧 密 码： 
   <input type="text" name="oldpwd" id="textfield" />

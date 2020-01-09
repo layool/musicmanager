@@ -12,11 +12,11 @@ if (session.getAttribute("PlutoAdmin")!=null) {
 var LastItem=null
 function MenuClick(obj,url){
 	if (LastItem!=null){
-		LastItem.className="menuA"
+		LastItem.className="menuA"//没被点中
 	}
-	obj.className="menuAS"
+	obj.className="menuAS"//点中
 	LastItem=obj
-	obj.blur()
+	obj.blur()//取消指定元素的焦点
 	if (url.length>0) parent.MainContent.location=url;
 }
 </script>

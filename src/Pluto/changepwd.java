@@ -1,10 +1,7 @@
 package Pluto;
-
 import java.io.PrintWriter;
 import java.sql.ResultSet;
-
 import org.apache.struts2.ServletActionContext;
-
 import Pluto.DBConnection;
 import Pluto.function;
 
@@ -65,7 +62,7 @@ public class changepwd extends ActionSupport {
                         + function.MD5Encode(newpwd1) + "' where name='"
                         + userName + "'");
                 if (update) {
-                    out.println(function.PlutoJump("修改成功！", "index.jsp"));
+                    out.println(function.PlutoJump("修改成功！", "index.jsp"));//弹出提示框然后跳转到指定页面
                 } else {
                     out.println(function.PlutoJump("修改失败！", "changepwd.jsp"));
                 }

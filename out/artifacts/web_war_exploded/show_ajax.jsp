@@ -18,8 +18,10 @@
 				String value = rs.getString("value");
 				String name = rs.getString("name");
 				long time = rs.getLong("time");
+				System.out.println(time);
 				Date date = new Date(time);
-				SimpleDateFormat sdf = new SimpleDateFormat(
+				System.out.println(date);
+				SimpleDateFormat sdf = new SimpleDateFormat(//格式化时间
 						"yyyy年MM月dd日 HH:mm:ss");
 				String comments_time = sdf.format(date);
 	%>

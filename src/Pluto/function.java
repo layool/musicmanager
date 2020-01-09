@@ -17,7 +17,7 @@ public class function {
             "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"};
 
     public static String byteArrayToHexString(byte[] b) {
-        StringBuffer resultSb = new StringBuffer();
+        StringBuffer resultSb = new StringBuffer();//线程安全
         for (int i = 0; i < b.length; i++) {
             resultSb.append(byteToHexString(b[i]));
         }
@@ -38,9 +38,9 @@ public class function {
 
         try {
             resultString = new String(origin);
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            resultString = byteArrayToHexString(md.digest(resultString
-                    .getBytes()));
+            MessageDigest md = MessageDigest.getInstance("MD5");//初始化messagedigest
+            resultString = byteArrayToHexString(md.digest(resultString//生成消息摘要
+                    .getBytes()));//一个字符串转化为一个字节数组byte[]
         } catch (Exception ex) {
 
         }

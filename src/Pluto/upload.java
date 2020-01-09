@@ -20,6 +20,7 @@ public class upload extends ActionSupport {
 
 	private String title;
 	private String singer;
+	private String price;
 	private String special;
 	private String path;
 	private String value;
@@ -56,6 +57,14 @@ public class upload extends ActionSupport {
 		this.singer = singer;
 	}
 
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
 	public String getSpecial() {
 		return special;
 	}
@@ -66,7 +75,7 @@ public class upload extends ActionSupport {
 
 	@Override
 	public String execute() throws Exception {
-		ServletActionContext.getResponse().setCharacterEncoding("utf-8");
+		ServletActionContext.getResponse().setCharacterEncoding("gb2312");
 		PrintWriter out = ServletActionContext.getResponse().getWriter();
 		HttpServletRequest request = ServletActionContext.getRequest();
 		HttpSession session = ServletActionContext.getRequest().getSession();
@@ -85,10 +94,12 @@ public class upload extends ActionSupport {
 			filePath = filePath.replace("upload", "upload\\");
 			DBConnection conn = new DBConnection();
 			long time = new Date().getTime();
-			if (conn.execute("insert into music(title,singer,special,value,time,click,url) values('"
+			if (conn.execute("insert into music(title,singer,price,special,value,time,click,url) values('"
 							+ title
 							+ "','"
 							+ singer
+							+ "','"
+							+ price
 							+ "','"
 							+ special
 							+ "','"
@@ -108,5 +119,4 @@ public class upload extends ActionSupport {
 		}
 		return null;
 	}
-
 }

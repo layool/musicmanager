@@ -17,7 +17,7 @@
 </style>
 	</head>
 
-	<body>
+	<body  style="background-image: url(/images/imag1.jpg);background-size: 100%">
 		<table width="80%" border="1" align="center">
 			<tr align="center">
 				<td >

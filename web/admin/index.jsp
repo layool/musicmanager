@@ -4,11 +4,11 @@
 <META http-equiv=Content-Type content="text/html; charset=utf-8">
 <META content="MSHTML 6.00.2900.3157" name=GENERATOR>
 </HEAD>
-<BODY>
+<BODY style="background-image: url(/images/imag1.jpg);background-size: 100%">
 <DIV style="TEXT-ALIGN: center">
 <form action="admin_login.action" method="post">
 <TABLE style="MARGIN: 0px auto" cellSpacing=3 cellPadding=3 border=0>
-  <TBODY>
+  <TBODY >
   <TR>
     <TD colspan="2"><div align="center">管理员登陆</div></TD>
     </TR>

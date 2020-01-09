@@ -14,6 +14,7 @@
 		<link href="css/page.css" rel="stylesheet" type="text/css" />
 		<link href="css/default.css" rel="stylesheet" type="text/css" />
 		<link href="css/thickbox.css" rel="stylesheet" type="text/css" />
+        <link href="css/search.css" rel="stylesheet" type="text/css" />
 		<style type="text/css" media="screen">
 			@import url(css/niceforms.css);
 		</style>
@@ -26,6 +27,12 @@
 			$.NiceJForms.build();
             <% flag=request.getParameter("flag");
             	flag_int=Integer.parseInt(flag == null || "".equals(flag)?"0":flag);
+            	String name = request.getParameter("name");
+//                application.setAttribute("name", name);
+                if(name!=null){
+                	flag_int=4;
+                	application.setAttribute("name", name);
+                }
             	System.out.println(flag_int);
                  if(flag_int==0){%>
                      dopage('index_ajax.jsp');
@@ -36,9 +43,14 @@
 			     if(flag_int==2){%>
             		dopage('index_ajax2.jsp');
             		<%}
-            	 if(flag_int==3){%>
-            		dopage('index_ajax3.jsp');
-            		<%}%>
+            		if(flag_int==3){%>
+					dopage('index_ajax3.jsp?page=1');
+					<%}
+					if(flag_int==4){%>
+					dopage('index_search.jsp?page=1');
+					<%}
+					name=null;
+					%>
 
          });
          function dopage(ajaxurl){
@@ -64,6 +76,12 @@
 					音乐库管理系统
 				</h1>
 			</div>
+			<form action="index.jsp" method="post">
+				<div class="boxss">
+					<input type="text"style="height:20px;width:160px;" name="name" placeholder="查询歌曲或歌手" />
+					<input type="submit" size=40 value="搜索" onclick=""/>
+				</div>
+			</form>
 			<div id="menu">
 				<ul>
 					<li class="active">

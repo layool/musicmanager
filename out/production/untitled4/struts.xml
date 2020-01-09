@@ -4,7 +4,8 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-	<constant name="struts.multipart.maxSize" value="10000000" />
+	<!--拦截器拦截超过90mb的文件-->
+	<constant name="struts.multipart.maxSize" value="90000000" />
 	<package name="Pluto" extends="struts-default">
 		<!--这个是struts中定义action请求跳转的。
 		这是struts2配置文件，和spring结合时class的值可以为spring配置文件中bean的name/id

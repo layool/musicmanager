@@ -146,6 +146,15 @@
 									<tr>
 										<td>
 											<div align="center">
+												价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：
+												<input type="text" name="price" id="price" size="15"
+												/>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<div align="center">
 												所属专辑：
 												<input type="text" name="special" id="special" size="15"
 													 />
@@ -190,27 +199,7 @@
 						<p>
 							<%=session.getAttribute("PlutoUser").toString()%>，欢迎您回来！
 						</p>
-						<%--<%
-							String userName = session.getAttribute("PlutoUser").toString();
-								ResultSet user_rs = conn
-										.executeQuery("select id from user where name = '"
-												+ userName + "'");
-								user_rs.next();
-								String message_id = user_rs.getString("id");
-								ResultSet message_rs = conn
-										.executeQuery("select count(id) as count from message where `to` ="
-												+ message_id + " and `new` = 1");
-								message_rs.next();
-								int myMessage = message_rs.getInt("count");
-						%>--%>
 						<p>
-							<%--您有<%=(myMessage == 0) ? (myMessage)
-								: ("<font color=red><strong>" + myMessage + "</strong></font>")%>封未读短消息，请
-							<a href="message.jsp" style="color: red">查看</a>！
-							<br />
-							播放我上次创建的
-							<a href="player" style="color: red">[播放列表]</a>！
-							<br />--%>
 							如果您有音乐分享，您可以点我进行
 							<a href="uploadmusic.jsp" style="color: red">[上传音乐]</a>！
 							<br />
