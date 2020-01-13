@@ -68,7 +68,7 @@ public class DBConnection {
 	*/
 	public ResultSet executeQuery(String sql) {
 		try {
-			pstmt = getConnection().prepareStatement(sql);
+			pstmt = getConnection().prepareStatement(sql);//.PreparedStatement是预编译的,对于批量处理可以大大提高效率. 也叫JDBC存储过程
 			rs = pstmt.executeQuery();
 		} catch (SQLException ex) {
 			System.err.println("query error:" + ex.getMessage());

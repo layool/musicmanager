@@ -46,38 +46,47 @@ public class uploadmusic extends ActionSupport {
 	
 	public String execute() throws Exception {
 		ServletActionContext.getResponse().setCharacterEncoding("gb2312");
-		PrintWriter out = ServletActionContext.getResponse().getWriter();
 		ServletActionContext.getResponse().setHeader("Pragma", "No-cache");
 		ServletActionContext.getResponse().setHeader("Cache-Control",
 				"no-cache");
 		ServletActionContext.getResponse().setDateHeader("Expires", 0);
-
-		//获取文件后缀
-		String fileType = getUploadFileName().substring(getUploadFileName().lastIndexOf("."));
-		//System.out.println(fileType);
-		//System.out.println(getUploadFileName());
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-		Date dt = new Date();
-		Random rd = new Random();
-		setUploadFileName(sdf.format(dt) + rd.nextInt(999999) + fileType);
-			FileOutputStream fos = new FileOutputStream(getSavePath() + "/"
-					+ getUploadFileName());
-			System.out.println("111111111"+getUpload());
-			System.out.println("111111111"+getSavePath());
-			System.out.println("2222222222"+getUploadFileName());
-			System.out.println("111111111"+fos);
-			System.out.println(upload);
-			FileInputStream fis = new FileInputStream(getUpload());
-			byte[] buffer = new byte[102400];
-			int len = 0;
-			while ((len = fis.read(buffer)) > 0) {
-				fos.write(buffer, 0, len);
+		System.out.println("wochulaile");
+		PrintWriter out = ServletActionContext.getResponse().getWriter();
+		System.out.println(upload);
+		if (upload!=null) {
+			//获取文件后缀
+			String fileType = getUploadFileName().substring(getUploadFileName().lastIndexOf("."));
+			//System.out.println(fileType);
+			//System.out.println(getUploadFileName());
+			if (fileType.equals(".mp3")) {
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+				Date dt = new Date();
+				Random rd = new Random();
+				setUploadFileName(sdf.format(dt) + rd.nextInt(999999) + fileType);
+				FileOutputStream fos = new FileOutputStream(getSavePath() + "/"
+						+ getUploadFileName());
+				System.out.println("文件后缀" + fileType);
+				System.out.println("111111111" + getUpload());
+				System.out.println("111111111" + getSavePath());
+				System.out.println("2222222222" + getUploadFileName());
+				System.out.println("111111111" + fos);
+				System.out.println(upload);
+				FileInputStream fis = new FileInputStream(getUpload());
+				byte[] buffer = new byte[102400];
+				int len = 0;
+				while ((len = fis.read(buffer)) > 0) {
+					fos.write(buffer, 0, len);
+				}
+				String filePath = "upload/" + getUploadFileName();
+				//out.println(function.PlutoJump("上传成功，请认真填写歌曲内容！", "upload.jsp?path=" + filePath));
+				out.println(function.toJump("upload.jsp?path=" + filePath));
+			} else {
+				out.println(function.PlutoJump("请上传mp3文件", "uploadmusic.jsp"));
 			}
-			String filePath = "upload/" + getUploadFileName();
-			//out.println(function.PlutoJump("上传成功，请认真填写歌曲内容！", "upload.jsp?path=" + filePath));
-			out.println(function.toJump("upload.jsp?path=" + filePath));
 
+		} else {
+			out.println(function.PlutoJump("请上传文件", "uploadmusic.jsp"));
+		}
 		return null;
 	}
-
 }

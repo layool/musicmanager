@@ -26,6 +26,9 @@
 				<td >
 					<span class="STYLE2">删除</span>
 				</td>
+				<td >
+					<span class="STYLE2">修改</span>
+				</td>
 			</tr>
 			<%
 				ResultSet rs = conn
@@ -37,8 +40,10 @@
 						out.println("<td><a href=\"../show.jsp?id="+id+"\" target=\"_blank\">" + title + "</a></td>");
 						out.println("<td><a href=\"admin_delmusic.action?id=" + id
 								+ "\">删除</a></td>");
+						out.println("<td><a href=\"./updatamusic.jsp?id="+id+"\">修改</a></td>");
 						out.println("</tr>");
-					}
+
+				}
 			%>
 		</table>
 		<p align="center">

@@ -40,8 +40,8 @@
 			}else if(!special || special.length<1){
 				$("#tip").html(" <font color=\"red\">所属专辑不能为空！</font>");
 				return false;
-			}else if(!value || value.length<10 || value.length>200){
-				$("#tip").html(" <font color=\"red\">简介必须大于10个字符且小于200个字符！</font>");
+			}else if(!value || value.length<2 || value.length>200){
+				$("#tip").html(" <font color=\"red\">简介必须大于2个字符且小于200个字符！</font>");
 				return false;
 			}else {
 				$("#tip").html(" ");
@@ -64,15 +64,9 @@
 					<li>
 						<a href="musicbox.jsp" accesskey="2" title="">音乐盒</a>
 					</li>
-					<!--<li>
-						<a href="message.jsp" accesskey="3" title="">短消息</a>
-					</li>-->
 					<li>
 						<a href="uploadmusic.jsp" accesskey="3" title="">分享歌曲</a>
 					</li>
-					<!--<li>
-						<a href="player" accesskey="4" title="">播放列表</a>
-					</li>-->
 				</ul>
 			</div>
 		</div>

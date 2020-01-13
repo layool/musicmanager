@@ -83,7 +83,6 @@
 				<param name="wmode" value="transparent" />
 			</object>
 			<br />
-			<embed id="AudioPlayback" src="http://mail.google.com/mail/html/audio.swf?audioUrl=<%=filePath%> style="width:400px; height:27px;" type="application/x-shockwave-flash"> </embed>
 			歌曲名：
 			<%=title%><br />
 			歌手：

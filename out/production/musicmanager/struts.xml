@@ -26,5 +26,6 @@
 		<action name="admin_delmusic" class="Pluto.admin.delmusic"></action>
 		<action name="delmusicbox" class="Pluto.delmusicbox"/>
 		<action name="changepwd" class="Pluto.changepwd"></action>
+		<action name="admin_updatamusic" class="Pluto.admin.updatamusic"></action>
 	</package>
 </struts>

@@ -89,6 +89,35 @@ CREATE TABLE `user` (
   `name` varchar(20) DEFAULT NULL,
   `pwd` varchar(32) DEFAULT NULL,
   `music_box` longtext,
+  `dingyue`int(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `singer`;
+
+CREATE TABLE `singer` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(10) NOT NULL DEFAULT 0,
+  `type` varchar(10) NOT NULL DEFAULT 0,
+  `age` varchar(10) NOT NULL DEFAULT 0,
+  `sex`varchar(2) NOT NULL DEFAULT "男",
+   `clicks`varchar(10) NOT NULL DEFAULT 0,
+   `info`varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `album`;
+
+CREATE TABLE `album` (
+  `id` int(4) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL DEFAULT 0,
+  `type` varchar(10) DEFAULT NULL,
+  `time` varchar(10) NOT NULL DEFAULT 0,
+  `price`varchar(10)  NOT NULL DEFAULT 0,
+   `singer`varchar(5) NOT NULL DEFAULT 0,
+   `com`varchar(10) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;

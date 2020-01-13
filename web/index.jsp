@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*,java.sql.*,Pluto.function"
+<%@ page language="java" import="java.util.*,java.sql.*,Pluto.function,Pluto.DBConnection"
 	pageEncoding="utf-8"%>
 <%@ page import="java.awt.*" %>
 <jsp:useBean id="conn" class="Pluto.DBConnection" scope="session" />
@@ -29,6 +29,14 @@
             	flag_int=Integer.parseInt(flag == null || "".equals(flag)?"0":flag);
             	String name = request.getParameter("name");
 //                application.setAttribute("name", name);
+                String clickdy = request.getParameter("clickdy");
+//            	System.out.println(clickdy);
+            	if(clickdy!=null){
+            		String ss="UPDATE user SET dingyue=1  where name ='" +session.getAttribute("PlutoUser").toString()+"'";
+
+					DBConnection db = new DBConnection();
+					db.executeUpdate(ss);
+            	}
                 if(name!=null){
                 	flag_int=4;
                 	application.setAttribute("name", name);
@@ -49,7 +57,7 @@
 					if(flag_int==4){%>
 					dopage('index_search.jsp?page=1');
 					<%}
-					name=null;
+					//name=null;
 					%>
 
          });
@@ -144,56 +152,90 @@
 
 
 						<p></p>
-						<%
-							} else {
-						%>
-						<p>
-							<%=session.getAttribute("PlutoUser").toString()%>，欢迎您回来！
-						</p>
-						<p>
-							如果您有音乐分享，您可以点我进行
-							<a href="uploadmusic.jsp" style="color: red">[上传音乐]</a>！
-						</p>
-						<p>
-							如果忘记密码可以选择
-							<a href="changepwd.jsp?height=175&width=300&modal=true"
-							   class="thickbox" style="color: red" title="修改密码">[修改密码]</a>！
-						</p>
-						<p>
-							退出请点
-							<a href="logout.action" style="color: red">[注销登陆]</a>！
-						</p>
-						<%
-							}
-						%>
-					</div>
-					<ul>
-						<li>
-							<h2>
-								最新消息
-							</h2>
-							<ul>
-								<%
-									ResultSet tip_rs = conn.executeQuery("SELECT * FROM `tip` ORDER BY id DESC");
-									while (tip_rs.next()) {
-										String tip = tip_rs.getString("value");
-										out.println("<li>");
-										out.println(tip);
-										out.println("</li>");
-									}
-								%>
+                        <%
+                        } else {
+                        %>
 
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<!-- end sidebar -->
-				<div style="clear: both;">
-					&nbsp;
-				</div>
-			</div>
-		</div>
-		<!-- end page -->
-		<hr />
-	</body>
+                        <%=session.getAttribute("PlutoUser").toString()%>，欢迎您回来！
+                        <br>
+
+                        如果您有音乐分享，您可以点我进行
+                        <a href="uploadmusic.jsp" style="color: red">[上传音乐]</a>！
+                        <br>
+
+                        如果忘记密码可以选择
+                        <a href="changepwd.jsp?height=175&width=300&modal=true"
+                           class="thickbox" style="color: red" title="修改密码">[修改密码]</a>！
+                        <br>
+                        <%
+                            //System.out.println(getType(session.getAttribute("PlutoUser").toString()));
+                            ResultSet dystate=conn.executeQuery("select * from user where name = '"+session.getAttribute("PlutoUser").toString()+"'");
+                            if(dystate.next()){
+                                if(dystate.getInt("dingyue")==0){
+//								System.out.println(dystate.getInt("dingyue"));
+                        %>
+                            <form action="" method="post">
+                            <div id="dingyue"style="display: block">
+                                <input type = "hidden" name="clickdy"/>
+                                <input type="submit" size=40 value="订阅" />
+                            </div>
+                            <div id="dy"style="display: none">
+                                已订阅
+                            </div>
+                            </form>
+                        <%
+                        }else{
+//								System.out.println(dystate.getInt("dingyue"));
+                        %>
+                           <form action="" method="post">
+                            <div id="dingyue"style="display: none">
+                                <input type = "hidden" name="clickdy"/>
+                                <input type="submit"  size=40 value="订阅" />
+                            </div>
+                            <div id="dy"style="display: block">
+                                <p>已订阅</p>
+                            </div>
+                           </form>
+                        <%
+                                }
+                            }
+
+                        %>
+                        <p>
+                            退出请点
+                            <a href="logout.action" style="color: red">[注销登陆]</a>！
+                        </p>
+                        <%
+                            }
+                        %>
+                    </div>
+                    <ul>
+                        <li>
+                            <h2>
+                                最新消息
+                            </h2>
+                            <ul>
+                                <%
+                                    ResultSet tip_rs = conn.executeQuery("SELECT * FROM `tip` ORDER BY id DESC");
+                                    while (tip_rs.next()) {
+                                        String tip = tip_rs.getString("value");
+                                        out.println("<li>");
+                                        out.println(tip);
+                                        out.println("</li>");
+                                    }
+                                %>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- end sidebar -->
+                <div style="clear: both;">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+        <!-- end page -->
+        <hr />
+    </body>
 </html>
